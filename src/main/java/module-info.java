@@ -9,7 +9,8 @@ module com.example.ehotel {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
-
+    requires mongo.java.driver;
+    requires static lombok;
     opens com.example.ehotel to javafx.fxml;
     exports com.example.ehotel;
 }
