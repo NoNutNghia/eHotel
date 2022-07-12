@@ -1,4 +1,4 @@
-package com.example.ehotel.model;
+package com.example.ehotel.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,14 +7,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Customer {
-    private String _id;
+
+public class CustomerDTO {
     private String fullName;
     private String dateOfBirth;
     private String phoneNumber;
-    private String idRoom;
     private String identityNumber;
-    private String checkinAt;
-    private String checkoutAt;
-
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class CheckinRoom {
-    private String id;
+    private String _id;
     private String timeCheckin;
     private String customerId;
 

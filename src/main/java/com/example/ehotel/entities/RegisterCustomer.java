@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 
-public class CheckoutRoom {
+public class RegisterCustomer {
     private String _id;
-    private String timeCheckout;
-    private String customerId;
 }

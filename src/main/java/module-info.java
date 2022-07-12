@@ -11,6 +11,7 @@ module com.example.ehotel {
     requires eu.hansolo.tilesfx;
     requires mongo.java.driver;
     requires static lombok;
+    requires json.simple;
     opens com.example.ehotel to javafx.fxml;
     exports com.example.ehotel;
 }
