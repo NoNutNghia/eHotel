@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="628.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ehotel.controller.MainController">
    <children>
       <ImageView fitHeight="628.0" fitWidth="870.0" layoutX="2.0" layoutY="2.0">
          <image>
-            <Image url="file:/D:/hotel-booking3.jpg" />
+            <Image url="@../../../hotel-booking3.jpg" />
          </image>
       </ImageView>
       <Button fx:id="reservation" layoutX="499.0" layoutY="248.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: green;" text="Reservation" textFill="WHITE">
@@ -22,7 +22,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="room" layoutX="243.0" layoutY="248.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: rgb(141,177,203);" text="Room" textFill="WHITE">
+      <Button fx:id="room" layoutX="243.0" layoutY="248.0" mnemonicParsing="false" onAction="#redirectToRoomMain" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: rgb(141,177,203);" text="Room" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -30,7 +30,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="room1" layoutX="373.0" layoutY="381.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: red;" text="Statistical" textFill="WHITE">
+      <Button fx:id="statistical" layoutX="373.0" layoutY="381.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: red;" text="Statistical" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>

@@ -96,7 +96,7 @@
   "rating": []
 },{
   "_id": "1dd120f2-ac2f-434c-a25b-add453ed3ce2",
-  "name": "C201",
+  "name": "C301",
   "price": 20.5,
   "beds": 3,
   "img": "",
@@ -108,7 +108,7 @@
   "rating": []
 },{
   "_id": "72a11815-e9b8-47f1-9ec7-b4e3dc9dd7eb",
-  "name": "C202",
+  "name": "C302",
   "price": 21.3,
   "beds": 3,
   "img": "",
@@ -120,7 +120,7 @@
   "rating": []
 },{
   "_id": "fcf5782a-6693-4899-b540-0e78f99b393d",
-  "name": "C203",
+  "name": "C303",
   "price": 22.5,
   "beds": 3,
   "img": "",

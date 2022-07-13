@@ -13,5 +13,7 @@ module com.example.ehotel {
     requires static lombok;
     requires json.simple;
     opens com.example.ehotel to javafx.fxml;
+    opens com.example.ehotel.controller to javafx.fxml;
     exports com.example.ehotel;
+    exports com.example.ehotel.controller;
 }

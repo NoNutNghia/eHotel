@@ -103,8 +103,9 @@ public class RoomServiceImpl implements RoomService {
     public void updateRoom(RoomDTO roomDTO, String roomId) {
         var connect = ConnectDB.connectDatabase("room");
 
-        Bson filter = Filters.eq("roomId");
+        Bson filter = Filters.eq(roomId);
         Bson update = Updates.combine(
+                Updates.set("name", roomDTO.getName()),
                 Updates.set("price", roomDTO.getPrice()),
                 Updates.set("beds", roomDTO.getBeds()),
                 Updates.set("status", roomDTO.getStatus())
@@ -157,8 +158,9 @@ public class RoomServiceImpl implements RoomService {
         room.setCheckinRoom((List<CheckinRoom>) doc.get("checkinRoom"));
         room.setCheckoutRoom((List<CheckoutRoom>) doc.get("checkoutRoom"));
         room.setPointRating((Double) doc.get("pointRating"));
+        room.setStatus(doc.get("status").toString());
         room.setRating((List<Integer>) doc.get("rating"));
-        room.setRegisterCustomer(doc.get("registerCustomer").toString());
+        room.setRegisterCustomer((String) doc.get("registerCustomer"));
 
         return room;
     }

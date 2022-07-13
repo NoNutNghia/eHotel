@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class RoomDTO {
+    private String name;
     private Double price;
     private Integer beds;
     private String status;
