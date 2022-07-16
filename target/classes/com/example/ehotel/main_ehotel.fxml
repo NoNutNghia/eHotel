@@ -14,7 +14,7 @@
             <Image url="@../../../hotel-booking3.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="reservation" layoutX="499.0" layoutY="248.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: green;" text="Reservation" textFill="WHITE">
+      <Button fx:id="reservation" layoutX="499.0" layoutY="248.0" mnemonicParsing="false" onAction="#redirectToReservationPage" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: green;" text="Reservation" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>

@@ -23,7 +23,24 @@ public class MainController {
 
 
     public void redirectToRoomMain(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/ehotel/room_main.fxml"));
+        try {
+            getResource("/com/example/ehotel/room_main.fxml", actionEvent);
+        } catch (Exception ex) {
+            throw ex;
+        }
+
+    }
+
+    public void redirectToReservationPage(ActionEvent actionEvent) throws IOException {
+        try {
+            getResource("/com/example/ehotel/register_room.fxml", actionEvent);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
+
+    public void getResource(String resource, ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(resource));
         Scene scene = new Scene(fxmlLoader.load());
 
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

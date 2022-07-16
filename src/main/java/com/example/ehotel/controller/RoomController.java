@@ -1,9 +1,12 @@
 package com.example.ehotel.controller;
 
 import com.example.ehotel.enums.StatusRoom;
+import com.example.ehotel.model.Customer;
 import com.example.ehotel.model.Room;
 import com.example.ehotel.request.RoomDTO;
+import com.example.ehotel.service.CustomerService;
 import com.example.ehotel.service.RoomService;
+import com.example.ehotel.service.impl.CustomerServiceImpl;
 import com.example.ehotel.service.impl.RoomServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,15 +14,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class RoomController implements Initializable {
@@ -45,8 +48,6 @@ public class RoomController implements Initializable {
     @FXML
     private Button checkoutRoom;
 
-    @FXML
-    private Button registerRoom;
 
     @FXML
     private Button backToMain;
@@ -55,7 +56,13 @@ public class RoomController implements Initializable {
     private Button updateInfoRoom;
 
     @FXML
+    private Button cancelRegister;
+
+    @FXML
     private Button cancelEditRoom;
+
+    @FXML
+    private Button checkInfoCustomer;
 
     @FXML
     private ChoiceBox<String> statusChoice;
@@ -63,13 +70,20 @@ public class RoomController implements Initializable {
     private final String[] statusRoom = {"available", "maintain"};
     private static String roomId;
     private RoomService roomService = new RoomServiceImpl();
+    private CustomerService customerService = new CustomerServiceImpl();
 
     public void chooseRoom(MouseEvent mouseEvent) {
         roomId = mouseEvent.getPickResult().getIntersectedNode().getId();
         if(roomId != null) {
             Room room = roomService.getRoomById(roomId);
             showInfo(room);
+            checkoutRoom.setId(roomId);
+            checkinRoom.setId(roomId);
+            if(room.getRegisterCustomer() != null) {
+                checkInfoCustomer.setId(room.getRegisterCustomer());
+            }
         }
+
 
     }
 
@@ -86,28 +100,35 @@ public class RoomController implements Initializable {
 
     private void checkAction(String statusRoom) {
         if(Objects.equals(statusRoom, StatusRoom.AVAILABLE.getStatusRoom())) {
-            registerRoom.setDisable(false);
             editInfoRoom.setDisable(false);
             checkinRoom.setDisable(true);
             checkoutRoom.setDisable(true);
+            checkoutRoom.setVisible(true);
+            cancelRegister.setVisible(false);
+            checkInfoCustomer.setVisible(false);
         }
         else if(Objects.equals(statusRoom, StatusRoom.MAINTAIN.getStatusRoom())) {
-            registerRoom.setDisable(true);
             editInfoRoom.setDisable(false);
             checkinRoom.setDisable(true);
             checkoutRoom.setDisable(true);
+            checkoutRoom.setVisible(true);
+            cancelRegister.setVisible(false);
+            checkInfoCustomer.setVisible(false);
         }
         else if(Objects.equals(statusRoom, StatusRoom.REGISTER.getStatusRoom())) {
-            registerRoom.setDisable(true);
             editInfoRoom.setDisable(true);
             checkinRoom.setDisable(false);
-            checkoutRoom.setDisable(true);
+            checkoutRoom.setVisible(false);
+            cancelRegister.setVisible(true);
+            checkInfoCustomer.setVisible(true);
         }
         else {
             editInfoRoom.setDisable(true);
-            registerRoom.setDisable(true);
             checkinRoom.setDisable(true);
             checkoutRoom.setDisable(false);
+            checkoutRoom.setVisible(true);
+            cancelRegister.setVisible(false);
+            checkInfoCustomer.setVisible(false);
         }
     }
 
@@ -138,6 +159,7 @@ public class RoomController implements Initializable {
 
     public void updateInfo(ActionEvent actionEvent) {
         RoomDTO roomDTO = new RoomDTO();
+
         roomDTO.setName(nameField.getText());
         roomDTO.setBeds( Integer.parseInt(bedsField.getText()));
         roomDTO.setPrice( Double.parseDouble(priceField.getText()));
@@ -165,5 +187,57 @@ public class RoomController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         statusChoice.getItems().addAll(statusRoom);
+        checkInfoCustomer.setVisible(false);
+    }
+
+    public void cancelRegister(ActionEvent actionEvent) {
+        checkoutRoom.setVisible(true);
+        cancelRegister.setVisible(false);
+    }
+
+    public void checkInRoom(ActionEvent actionEvent) {
+        roomService.checkinRoom(checkinRoom.getId(), checkInfoCustomer.getId());
+        Room room = roomService.getRoomById(checkinRoom.getId());
+        showInfo(room);
+    }
+
+    public void checkOutRoom(ActionEvent actionEvent) {
+        TextInputDialog textInputDialog = new TextInputDialog();
+        textInputDialog.setHeaderText("Rating from customer");
+        textInputDialog.setContentText("Customer Rating (0 - 10): ");
+
+        Optional<String> rating = textInputDialog.showAndWait();
+        if(rating.isPresent()) {
+            roomService.checkoutRoom(checkoutRoom.getId(), checkInfoCustomer.getId(), rating.get());
+        } else {
+            roomService.checkoutRoom(checkoutRoom.getId(), checkInfoCustomer.getId(), "10");
+        }
+
+        Room room = roomService.getRoomById(checkoutRoom.getId());
+        showInfo(room);
+    }
+
+    public void checkInfoCustomer(ActionEvent actionEvent) {
+        Dialog<Void> dialog = new Dialog<Void>();
+        DialogPane dialogPane = new DialogPane();
+        Label label = new Label();
+
+        Customer customer = customerService.getCustomerById(checkInfoCustomer.getId());
+        label.setText(
+                        "Full name: \t" + customer.getFullName()  + "\n" +
+                        "Identity number: \t" + customer.getIdentityNumber() + "\n" +
+                        "Phone number: \t" + customer.getPhoneNumber() + "\n" +
+                        "Date of birth: \t" + customer.getDateOfBirth() + "\n" +
+                        "Reserve at: \t" + customer.getReserveAt() + ""
+
+            );
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest((e) -> {
+            dialog.hide();
+        });
+        dialog.setTitle("Customer Info");
+        dialogPane.setContent(label);
+        dialog.setDialogPane(dialogPane);
+        dialog.showAndWait();
     }
 }

@@ -5,5 +5,7 @@ import com.example.ehotel.request.CustomerDTO;
 
 public interface CustomerService {
 
-    public void createCustomer(CustomerDTO customerDTO);
+    public String createCustomer(CustomerDTO customerDTO);
+
+    public Customer getCustomerById(String id);
 }

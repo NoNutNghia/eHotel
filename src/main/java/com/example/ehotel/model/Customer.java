@@ -14,6 +14,7 @@ public class Customer {
     private String phoneNumber;
     private String idRoom;
     private String identityNumber;
+    private String reserveAt;
     private String checkinAt;
     private String checkoutAt;
 

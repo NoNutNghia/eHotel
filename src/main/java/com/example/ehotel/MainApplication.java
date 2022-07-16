@@ -15,7 +15,7 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("room_main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("main_ehotel.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("eHotel application");
         primaryStage.setResizable(false);

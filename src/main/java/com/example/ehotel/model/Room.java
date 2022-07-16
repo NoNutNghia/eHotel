@@ -26,6 +26,6 @@ public class Room {
     private Double pointRating;
     private String status;
     private String registerCustomer;
-    private List<Integer> rating = new ArrayList<>();
+    private List<Double> rating = new ArrayList<>();
 
 }

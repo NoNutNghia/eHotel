@@ -15,5 +15,7 @@ module com.example.ehotel {
     opens com.example.ehotel to javafx.fxml;
     opens com.example.ehotel.controller to javafx.fxml;
     exports com.example.ehotel;
+    exports com.example.ehotel.model;
+    exports com.example.ehotel.entities;
     exports com.example.ehotel.controller;
 }

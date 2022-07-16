@@ -25,7 +25,6 @@
                            </image>
                         </ImageView>
                         <Label id="326eaa6f-eabd-454f-8acf-66d753ed41a1" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="A101" />
-                        <Label id="326eaa6f-eabd-454f-8acf-66d753ed41a1" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -34,7 +33,6 @@
                   <AnchorPane id="0d2ae2b1-7b1d-4cd0-82d0-0959b0d4b40c" layoutX="257.0" layoutY="36.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="0d2ae2b1-7b1d-4cd0-82d0-0959b0d4b40c" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="A102" />
-                        <Label id="0d2ae2b1-7b1d-4cd0-82d0-0959b0d4b40c" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="0d2ae2b1-7b1d-4cd0-82d0-0959b0d4b40c" fitHeight="112.0" fitWidth="200.0" layoutX="2.0" layoutY="2.0">
                            <image>
                               <Image url="@../../../singleBed-2.jpg" />
@@ -48,7 +46,6 @@
                   <AnchorPane id="841d5a5f-7c07-4ada-b503-ec93cc37be70" layoutX="497.0" layoutY="36.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="841d5a5f-7c07-4ada-b503-ec93cc37be70" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="A103" />
-                        <Label id="841d5a5f-7c07-4ada-b503-ec93cc37be70" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="841d5a5f-7c07-4ada-b503-ec93cc37be70" fitHeight="112.0" fitWidth="196.0" layoutX="1.0" layoutY="2.0">
                            <image>
                               <Image url="@../../../singleBed-3.jpg" />
@@ -62,7 +59,6 @@
                   <AnchorPane id="650d520c-0b86-4d2a-a5fb-6b26a7ef93e3" layoutX="17.0" layoutY="246.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="650d520c-0b86-4d2a-a5fb-6b26a7ef93e3" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="A105" />
-                        <Label id="650d520c-0b86-4d2a-a5fb-6b26a7ef93e3" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="650d520c-0b86-4d2a-a5fb-6b26a7ef93e3" fitHeight="114.0" fitWidth="199.0">
                            <image>
                               <Image url="@../../../singleBed-5.jpg" />
@@ -76,7 +72,6 @@
                   <AnchorPane id="80b563e0-421b-499d-99fe-e7dcca4528fa" layoutX="736.0" layoutY="36.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="80b563e0-421b-499d-99fe-e7dcca4528fa" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="A104" />
-                        <Label id="80b563e0-421b-499d-99fe-e7dcca4528fa" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="80b563e0-421b-499d-99fe-e7dcca4528fa" fitHeight="111.0" fitWidth="204.0" layoutX="1.0" layoutY="1.0">
                            <image>
                               <Image url="@../../../singleBed-4.jpg" />
@@ -90,7 +85,6 @@
                   <AnchorPane id="2ff7e322-b2f5-452c-9755-10f51f6a8896" layoutX="257.0" layoutY="247.0" onMouseClicked="#chooseRoom" prefHeight="62.0" prefWidth="89.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="2ff7e322-b2f5-452c-9755-10f51f6a8896" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="B201" />
-                        <Label id="2ff7e322-b2f5-452c-9755-10f51f6a8896" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="2ff7e322-b2f5-452c-9755-10f51f6a8896" fitHeight="113.0" fitWidth="193.0" layoutX="1.0" layoutY="2.0">
                            <image>
                               <Image url="@../../../doubleBed-3.jpg" />
@@ -104,7 +98,6 @@
                   <AnchorPane id="c98edcf0-2f41-4f3e-b6bf-0f7c0c785df7" layoutX="497.0" layoutY="246.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="c98edcf0-2f41-4f3e-b6bf-0f7c0c785df7" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="B202" />
-                        <Label id="c98edcf0-2f41-4f3e-b6bf-0f7c0c785df7" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="c98edcf0-2f41-4f3e-b6bf-0f7c0c785df7" fitHeight="117.0" fitWidth="192.0" layoutX="2.0" layoutY="2.0">
                            <image>
                               <Image url="@../../../doubleBed-2.jpg" />
@@ -118,7 +111,6 @@
                   <AnchorPane id="8a895ccd-7194-4759-9a69-90703dad35c7" layoutX="736.0" layoutY="246.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="8a895ccd-7194-4759-9a69-90703dad35c7" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="B203" />
-                        <Label id="8a895ccd-7194-4759-9a69-90703dad35c7" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="8a895ccd-7194-4759-9a69-90703dad35c7" fitHeight="120.0" fitWidth="195.0" layoutX="1.0" layoutY="1.0">
                            <image>
                               <Image url="@../../../doubleBed-1.jpg" />
@@ -132,7 +124,6 @@
                   <AnchorPane id="1dd120f2-ac2f-434c-a25b-add453ed3ce2" layoutX="17.0" layoutY="452.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="1dd120f2-ac2f-434c-a25b-add453ed3ce2" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="C301" />
-                        <Label id="1dd120f2-ac2f-434c-a25b-add453ed3ce2" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="1dd120f2-ac2f-434c-a25b-add453ed3ce2" fitHeight="115.0" fitWidth="198.0" layoutX="1.0" layoutY="2.0">
                            <image>
                               <Image url="@../../../trippleBed-3.jpg" />
@@ -146,7 +137,6 @@
                   <AnchorPane id="72a11815-e9b8-47f1-9ec7-b4e3dc9dd7eb" layoutX="257.0" layoutY="452.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="72a11815-e9b8-47f1-9ec7-b4e3dc9dd7eb" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="C302" />
-                        <Label id="72a11815-e9b8-47f1-9ec7-b4e3dc9dd7eb" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="72a11815-e9b8-47f1-9ec7-b4e3dc9dd7eb" fitHeight="119.0" fitWidth="195.0" layoutX="1.0" layoutY="2.0">
                            <image>
                               <Image url="@../../../trippleBed-2.jpg" />
@@ -160,7 +150,6 @@
                   <AnchorPane id="fcf5782a-6693-4899-b540-0e78f99b393d" layoutX="497.0" layoutY="452.0" onMouseClicked="#chooseRoom" prefHeight="154.0" prefWidth="198.0" style="-fx-border-color: black;">
                      <children>
                         <Label id="fcf5782a-6693-4899-b540-0e78f99b393d" layoutX="7.0" layoutY="131.0" prefHeight="18.0" prefWidth="66.0" text="C303" />
-                        <Label id="fcf5782a-6693-4899-b540-0e78f99b393d" layoutX="152.0" layoutY="131.0" prefHeight="18.0" prefWidth="42.0" text="0.0 / 10" textAlignment="CENTER" />
                         <ImageView id="fcf5782a-6693-4899-b540-0e78f99b393d" fitHeight="120.0" fitWidth="197.0" layoutX="1.0" layoutY="2.0">
                            <image>
                               <Image url="@../../../trippleBed-1.jpg" />
@@ -199,13 +188,14 @@
          </font>
       </Label>
       <TextField fx:id="statusField" editable="false" layoutX="1034.0" layoutY="165.0" prefHeight="26.0" prefWidth="176.0" />
-      <Button fx:id="checkinRoom" disable="true" layoutX="1034.0" layoutY="306.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="126.0" text="Check-in" />
-      <Button fx:id="checkoutRoom" disable="true" layoutX="1034.0" layoutY="388.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="126.0" text="Check-out" />
+      <Button fx:id="checkinRoom" disable="true" layoutX="1034.0" layoutY="306.0" mnemonicParsing="false" onAction="#checkInRoom" prefHeight="42.0" prefWidth="126.0" text="Check-in" />
+      <Button fx:id="checkoutRoom" disable="true" layoutX="1034.0" layoutY="388.0" mnemonicParsing="false" onAction="#checkOutRoom" prefHeight="42.0" prefWidth="126.0" text="Check-out" />
       <Button fx:id="editInfoRoom" disable="true" layoutX="962.0" layoutY="225.0" mnemonicParsing="false" onAction="#editInfo" prefHeight="35.0" prefWidth="59.0" text="Edit" />
-      <Button fx:id="registerRoom" disable="true" layoutX="1034.0" layoutY="468.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="126.0" text="Register" />
       <Button fx:id="backToMain" layoutX="1034.0" layoutY="542.0" mnemonicParsing="false" onAction="#backToMainSite" prefHeight="42.0" prefWidth="126.0" text="Back to main page" />
       <Button fx:id="updateInfoRoom" layoutX="962.0" layoutY="225.0" mnemonicParsing="false" onAction="#updateInfo" prefHeight="35.0" prefWidth="59.0" text="Update" visible="false" />
       <Button fx:id="cancelEditRoom" layoutX="1037.0" layoutY="225.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="35.0" prefWidth="59.0" text="Cancel" visible="false" />
       <ChoiceBox fx:id="statusChoice" layoutX="1034.0" layoutY="166.0" prefHeight="26.0" prefWidth="176.0" visible="false" />
+      <Button fx:id="checkInfoCustomer" layoutX="1083.0" layoutY="221.0" mnemonicParsing="false" onAction="#checkInfoCustomer" prefHeight="42.0" prefWidth="126.0" text="Check info customer" />
+      <Button fx:id="cancelRegister" layoutX="1034.0" layoutY="388.0" mnemonicParsing="false" onAction="#cancelRegister" prefHeight="42.0" prefWidth="126.0" text="Cancel Register" visible="false" />
    </children>
 </AnchorPane>

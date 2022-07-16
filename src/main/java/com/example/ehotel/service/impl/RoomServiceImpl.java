@@ -3,14 +3,17 @@ package com.example.ehotel.service.impl;
 import com.example.ehotel.connectDB.ConnectDB;
 import com.example.ehotel.entities.CheckinRoom;
 import com.example.ehotel.entities.CheckoutRoom;
-import com.example.ehotel.entities.RegisterCustomer;
+import com.example.ehotel.enums.StatusRoom;
 import com.example.ehotel.model.Room;
 import com.example.ehotel.request.RoomDTO;
 import com.example.ehotel.service.CheckService;
 import com.example.ehotel.service.RoomService;
 import com.mongodb.client.MongoCursor;
+import com.mongodb.client.model.Aggregates;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Updates;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
@@ -19,7 +22,7 @@ import java.util.*;
 
 public class RoomServiceImpl implements RoomService {
 
-    private CheckService checkService = new CheckServiceImpl();
+    private final CheckService checkService = new CheckServiceImpl();
 
     @Override
     public void reserveRoom(String customerId, String roomId) {
@@ -30,15 +33,14 @@ public class RoomServiceImpl implements RoomService {
 
         Bson update = Updates.combine(
                 Updates.set("registerCustomer", customerId),
-                Updates.set("status", "reservation")
+                Updates.set("status", StatusRoom.REGISTER.getStatusRoom())
 
         );
 
         var connectCustomer = ConnectDB.connectDatabase("customer");
         Bson filterCustomer = Filters.eq("_id", customerId);
         Bson updateCustomer = Updates.combine(
-                Updates.set("checkinAt", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime())),
-                Updates.set("roomId", roomId)
+                Updates.set("idRoom", roomId)
         );
 
         connectCustomer.findOneAndUpdate(filterCustomer, updateCustomer);
@@ -51,19 +53,26 @@ public class RoomServiceImpl implements RoomService {
     public void checkinRoom(String roomId, String customerId) {
         var connect = ConnectDB.connectDatabase("room");
 
-        Bson filter = Filters.eq("_id", roomId);
+        var connectCustomer = ConnectDB.connectDatabase("customer");
 
-        CheckinRoom checkinRoom = new CheckinRoom();
-        checkinRoom.set_id(UUID.randomUUID().toString());
-        checkinRoom.setTimeCheckin(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
-        checkinRoom.setCustomerId(customerId);
+        Bson filter = Filters.eq("_id", roomId);
+        Bson filerCustomer = Filters.eq("_id", customerId);
+
+        String checkinAt = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+        CheckinRoom checkinRoom = new CheckinRoom(UUID.randomUUID().toString(), checkinAt, customerId);
 
         Bson update = Updates.combine(
                 Updates.push("checkinRoom", checkinRoom),
                 Updates.set("status", "in-use")
         );
 
+        Bson updateCustomer = Updates.set("checkinAt", checkinAt);
+
+        System.out.println(update);
+        System.out.println(filter);
+
         connect.findOneAndUpdate(filter, update);
+        connectCustomer.findOneAndUpdate(filerCustomer, updateCustomer);
 
         checkService.createCheckin(checkinRoom, roomId);
 
@@ -71,25 +80,29 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void checkoutRoom(String roomId, String customerId) {
+    public void checkoutRoom(String roomId, String customerId, String rating) {
         var connect = ConnectDB.connectDatabase("room");
 
         Bson filter = Filters.eq("_id", roomId);
 
+        String checkoutAt = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+
         CheckoutRoom checkoutRoom = new CheckoutRoom();
         checkoutRoom.set_id(UUID.randomUUID().toString());
-        checkoutRoom.setTimeCheckout(new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+        checkoutRoom.setTimeCheckout(checkoutAt);
         checkoutRoom.setCustomerId(customerId);
 
         Bson update = Updates.combine(
                 Updates.push("checkoutRoom", checkoutRoom),
                 Updates.set("registerCustomer", null),
-                Updates.set("status", "available")
+                Updates.set("status", "available"),
+                Updates.push("rating", Double.parseDouble(rating))
         );
+
 
         var connectCustomer = ConnectDB.connectDatabase("customer");
         Bson filterCustomer = Filters.eq("_id", customerId);
-        Bson updateCustomer = Updates.set("checkoutAt", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+        Bson updateCustomer = Updates.set("checkoutAt", checkoutAt);
 
         connectCustomer.findOneAndUpdate(filterCustomer, updateCustomer);
         connect.findOneAndUpdate(filter, update);
@@ -147,6 +160,26 @@ public class RoomServiceImpl implements RoomService {
         return roomList;
     }
 
+    @Override
+    public ObservableList<Room> findRoomByStatus() {
+        ObservableList<Room> roomObservableList = FXCollections.observableArrayList();
+        var connect = ConnectDB.connectDatabase("room");
+        Bson filter = Filters.eq("status", StatusRoom.AVAILABLE.getStatusRoom());
+
+        MongoCursor<Document> cursor = connect.aggregate(Arrays.asList(
+                Aggregates.match(filter)
+        )).iterator();
+
+        while (cursor.hasNext()) {
+            var doc = cursor.next();
+
+            Room room = returnObjectRoom(doc);
+
+            roomObservableList.add(room);
+        }
+        return roomObservableList;
+    }
+
     public Room returnObjectRoom(Document doc) {
 
         Room room = new Room();
@@ -159,7 +192,7 @@ public class RoomServiceImpl implements RoomService {
         room.setCheckoutRoom((List<CheckoutRoom>) doc.get("checkoutRoom"));
         room.setPointRating((Double) doc.get("pointRating"));
         room.setStatus(doc.get("status").toString());
-        room.setRating((List<Integer>) doc.get("rating"));
+        room.setRating((List<Double>) doc.get("rating"));
         room.setRegisterCustomer((String) doc.get("registerCustomer"));
 
         return room;
