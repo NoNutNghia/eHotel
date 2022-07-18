@@ -100,7 +100,14 @@ public class ReservationController implements Initializable {
     }
 
     public void searchRoom(ActionEvent actionEvent) {
+        String choice = bedsChoice.getValue();
+        String fromPriceValue = fromPrice.getText();
+        String toPriceValue = toPrice.getText();
+        if(choice != null || !fromPriceValue.isEmpty() || !toPriceValue.isEmpty()) {
+            roomObservableList = roomService.findRoomBySearch(choice, fromPriceValue, toPriceValue);
 
+            showRoom(roomObservableList);
+        }
     }
 
     public void registerRoom(ActionEvent actionEvent) {
@@ -116,27 +123,25 @@ public class ReservationController implements Initializable {
 
         roomService.reserveRoom(idCustomer, roomSelect.get(0).get_id());
 
+        roomObservableList = roomService.findRoomByStatus();
         clearField();
-        showRoom();
+        showRoom(roomObservableList);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        bedsChoice.setValue("1");
         bedsChoice.getItems().addAll(bedsChoiceBox);
-
-        showRoom();
+        roomObservableList = roomService.findRoomByStatus();
+        showRoom(roomObservableList);
     }
 
-    private void showRoom() {
+    private void showRoom(ObservableList<Room> roomObservableList) {
 
         _id.setCellValueFactory(new PropertyValueFactory<>("_id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         beds.setCellValueFactory(new PropertyValueFactory<>("beds"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         rating.setCellValueFactory(new PropertyValueFactory<>("pointRating"));
-
-        roomObservableList = roomService.findRoomByStatus();
 
         room.setItems(roomObservableList);
     }

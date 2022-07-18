@@ -3,8 +3,11 @@ package com.example.ehotel.service.impl;
 import com.example.ehotel.connectDB.ConnectDB;
 import com.example.ehotel.entities.CheckinRoom;
 import com.example.ehotel.entities.CheckoutRoom;
+import com.example.ehotel.model.Checkin;
 import com.example.ehotel.service.CheckService;
+import com.mongodb.client.model.Filters;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 public class CheckServiceImpl implements CheckService {
 
@@ -34,5 +37,31 @@ public class CheckServiceImpl implements CheckService {
         connect.insertOne(doc);
 
         ConnectDB.closeConnect();
+    }
+
+    @Override
+    public Checkin getCheckinByRoomId(String roomId) {
+        var connect = ConnectDB.connectDatabase("checkin");
+
+        Bson filter = Filters.eq("roomId", roomId);
+
+        Document doc = connect.find(filter).first();
+
+        Checkin checkin = returnCheckinObject(doc);
+
+        ConnectDB.closeConnect();
+
+        return checkin;
+    }
+
+    private Checkin returnCheckinObject(Document document) {
+        Checkin checkin = new Checkin();
+
+        checkin.set_id(document.get("_id").toString());
+        checkin.setTimeCheckin(document.get("timeCheckin").toString());
+        checkin.setRoomId(document.get("roomId").toString());
+        checkin.setCustomerId(document.get("customerId").toString());
+
+        return checkin;
     }
 }

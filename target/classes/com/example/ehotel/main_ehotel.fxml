@@ -30,7 +30,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="statistical" layoutX="373.0" layoutY="381.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: red;" text="Statistical" textFill="WHITE">
+      <Button fx:id="statistical" layoutX="373.0" layoutY="381.0" mnemonicParsing="false" onAction="#redirectToStatisticalPage" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: red;" text="Statistical" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>

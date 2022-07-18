@@ -49,4 +49,12 @@ public class MainController {
         window.setScene(scene);
         window.show();
     }
+
+    public void redirectToStatisticalPage(ActionEvent actionEvent) throws IOException {
+        try {
+            getResource("/com/example/ehotel/statistical_ehotel.fxml", actionEvent);
+        } catch (Exception ex) {
+            throw ex;
+        }
+    }
 }

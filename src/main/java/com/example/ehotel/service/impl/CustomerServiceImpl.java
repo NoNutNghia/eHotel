@@ -28,7 +28,7 @@ public class CustomerServiceImpl implements CustomerService {
         customerDoc.append("phoneNumber", customerDTO.getPhoneNumber());
         customerDoc.append("idRoom", "");
         customerDoc.append("identityNumber", customerDTO.getIdentityNumber());
-        customerDoc.append("reserveAt", new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+        customerDoc.append("reserveAt", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(Calendar.getInstance().getTime()));
         customerDoc.append("checkinAt", "");
         customerDoc.append("checkoutAt", "");
 

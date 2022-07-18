@@ -26,6 +26,7 @@ public class Room {
     private Double pointRating;
     private String status;
     private String registerCustomer;
+    private Double totalTurnover;
     private List<Double> rating = new ArrayList<>();
 
 }

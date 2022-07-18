@@ -48,6 +48,7 @@ public class BackupApplication extends Application {
         doc.append("checkoutRoom", jsonObject.get("checkoutRoom"));
         doc.append("pointRating", 0.0);
         doc.append("status", "available");
+        doc.append("totalTurnover", 0.0);
         doc.append("registerCustomer", null);
         doc.append("rating", jsonObject.get("rating"));
 
