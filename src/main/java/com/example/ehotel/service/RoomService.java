@@ -23,6 +23,8 @@ public interface RoomService {
 
     public ObservableList<Room> findRoomByStatus();
 
+    public ObservableList<Room> findRoomByStatusRegister();
+
     public ObservableList<Room> findRoomBySearch(String beds, String fromPrice, String toPrice);
 
 }

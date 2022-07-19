@@ -195,6 +195,29 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
+    public ObservableList<Room> findRoomByStatusRegister() {
+        ObservableList<Room> roomObservableList = FXCollections.observableArrayList();
+        var connect = ConnectDB.connectDatabase("room");
+        Bson filter = Filters.or(
+                Filters.eq("status", StatusRoom.REGISTER.getStatusRoom()),
+                Filters.eq("status", StatusRoom.IN_USE.getStatusRoom())
+        );
+
+        MongoCursor<Document> cursor = connect.aggregate(Arrays.asList(
+                Aggregates.match(filter)
+        )).iterator();
+
+        while (cursor.hasNext()) {
+            var doc = cursor.next();
+
+            Room room = returnObjectRoom(doc);
+
+            roomObservableList.add(room);
+        }
+        return roomObservableList;
+    }
+
+    @Override
     public ObservableList<Room> findRoomBySearch(String beds, String fromPrice, String toPrice) {
         ObservableList<Room> roomObservableList = FXCollections.observableArrayList();
         var connect = ConnectDB.connectDatabase("room");

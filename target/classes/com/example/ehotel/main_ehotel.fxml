@@ -14,7 +14,7 @@
             <Image url="@../../../hotel-booking3.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="reservation" layoutX="499.0" layoutY="248.0" mnemonicParsing="false" onAction="#redirectToReservationPage" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: green;" text="Reservation" textFill="WHITE">
+      <Button fx:id="reservation" layoutX="501.0" layoutY="187.0" mnemonicParsing="false" onAction="#redirectToReservationPage" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: green;" text="Reservation" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -22,7 +22,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="room" layoutX="243.0" layoutY="248.0" mnemonicParsing="false" onAction="#redirectToRoomMain" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: rgb(141,177,203);" text="Room" textFill="WHITE">
+      <Button fx:id="room" layoutX="245.0" layoutY="187.0" mnemonicParsing="false" onAction="#redirectToRoomMain" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: rgb(141,177,203);" text="Room" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>
@@ -30,7 +30,15 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Button>
-      <Button fx:id="statistical" layoutX="373.0" layoutY="381.0" mnemonicParsing="false" onAction="#redirectToStatisticalPage" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: red;" text="Statistical" textFill="WHITE">
+      <Button fx:id="statistical" layoutX="373.0" layoutY="316.0" mnemonicParsing="false" onAction="#redirectToStatisticalPage" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: red;" text="Statistical" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="customerInfo" layoutX="371.0" layoutY="434.0" mnemonicParsing="false" onAction="#redirectToCustomerInfoPage" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: rgb(13,17,23);" text="Customer" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="OPEN_HAND" />
          </cursor>

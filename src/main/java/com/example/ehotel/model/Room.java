@@ -2,7 +2,6 @@ package com.example.ehotel.model;
 
 import com.example.ehotel.entities.CheckinRoom;
 import com.example.ehotel.entities.CheckoutRoom;
-import com.example.ehotel.entities.RegisterCustomer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -23,20 +23,12 @@ public class MainController {
 
 
     public void redirectToRoomMain(ActionEvent actionEvent) throws IOException {
-        try {
-            getResource("/com/example/ehotel/room_main.fxml", actionEvent);
-        } catch (Exception ex) {
-            throw ex;
-        }
+        getResource("/com/example/ehotel/room_main.fxml", actionEvent);
 
     }
 
     public void redirectToReservationPage(ActionEvent actionEvent) throws IOException {
-        try {
-            getResource("/com/example/ehotel/register_room.fxml", actionEvent);
-        } catch (Exception ex) {
-            throw ex;
-        }
+        getResource("/com/example/ehotel/register_room.fxml", actionEvent);
     }
 
     public void getResource(String resource, ActionEvent actionEvent) throws IOException {
@@ -51,10 +43,10 @@ public class MainController {
     }
 
     public void redirectToStatisticalPage(ActionEvent actionEvent) throws IOException {
-        try {
-            getResource("/com/example/ehotel/statistical_ehotel.fxml", actionEvent);
-        } catch (Exception ex) {
-            throw ex;
-        }
+        getResource("/com/example/ehotel/statistical_ehotel.fxml", actionEvent);
+    }
+
+    public void redirectToCustomerInfoPage(ActionEvent actionEvent) throws IOException {
+        getResource("/com/example/ehotel/customer_ehotel.fxml", actionEvent);
     }
 }
