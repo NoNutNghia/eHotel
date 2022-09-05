@@ -83,7 +83,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public void checkoutRoom(String roomId, String customerId, String rating) {
+    public Double checkoutRoom(String roomId, String customerId, String rating) {
         var connect = ConnectDB.connectDatabase("room");
 
         Bson filter = Filters.eq("_id", roomId);
@@ -124,6 +124,8 @@ public class RoomServiceImpl implements RoomService {
         checkService.createCheckout(checkoutRoom, roomId);
 
         ConnectDB.closeConnect();
+
+        return turnover;
     }
 
     @Override
@@ -136,6 +138,21 @@ public class RoomServiceImpl implements RoomService {
                 Updates.set("price", roomDTO.getPrice()),
                 Updates.set("beds", roomDTO.getBeds()),
                 Updates.set("status", roomDTO.getStatus())
+        );
+
+        connect.findOneAndUpdate(filter, update);
+
+        ConnectDB.closeConnect();
+    }
+
+    @Override
+    public void cancelRegister(String roomId) {
+        var connect = ConnectDB.connectDatabase("room");
+
+        Bson filter = Filters.eq("_id", roomId);
+        Bson update = Updates.combine(
+                Updates.set("status", StatusRoom.AVAILABLE.getStatusRoom()),
+                Updates.set("registerCustomer", null)
         );
 
         connect.findOneAndUpdate(filter, update);

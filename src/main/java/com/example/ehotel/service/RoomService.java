@@ -13,9 +13,11 @@ public interface RoomService {
 
     public void checkinRoom(String roomId, String customerId);
 
-    public void checkoutRoom(String roomId, String customerId, String rating);
+    public Double checkoutRoom(String roomId, String customerId, String rating);
 
     public void updateRoom(RoomDTO roomDTO, String roomId);
+
+    public void cancelRegister(String roomId);
 
     public Room getRoomById(String roomId);
 

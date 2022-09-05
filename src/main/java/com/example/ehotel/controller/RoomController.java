@@ -81,8 +81,6 @@ public class RoomController implements Initializable {
                 checkInfoCustomer.setId(room.getRegisterCustomer());
             }
         }
-
-
     }
 
     private void showInfo(Room room) {
@@ -192,6 +190,11 @@ public class RoomController implements Initializable {
     public void cancelRegister(ActionEvent actionEvent) {
         checkoutRoom.setVisible(true);
         cancelRegister.setVisible(false);
+
+        roomService.cancelRegister(roomId);
+        Room room = roomService.getRoomById(roomId);
+
+        showInfo(room);
     }
 
     public void checkInRoom(ActionEvent actionEvent) {
@@ -206,11 +209,25 @@ public class RoomController implements Initializable {
         textInputDialog.setContentText("Customer Rating (0 - 10): ");
 
         Optional<String> rating = textInputDialog.showAndWait();
+        Double price;
         if(rating.isPresent()) {
-            roomService.checkoutRoom(checkoutRoom.getId(), checkInfoCustomer.getId(), rating.get());
+            price = roomService.checkoutRoom(checkoutRoom.getId(), checkInfoCustomer.getId(), rating.get());
         } else {
-            roomService.checkoutRoom(checkoutRoom.getId(), checkInfoCustomer.getId(), "10");
+            price = roomService.checkoutRoom(checkoutRoom.getId(), checkInfoCustomer.getId(), "10");
         }
+
+        Dialog<Void> dialog = new Dialog<Void>();
+        DialogPane dialogPane = new DialogPane();
+        Label label = new Label();
+        label.setText("Customer must pay : " + price + "\n");
+        Window window = dialog.getDialogPane().getScene().getWindow();
+        window.setOnCloseRequest((e) -> {
+            dialog.hide();
+        });
+        dialog.setTitle("Customer Info");
+        dialogPane.setContent(label);
+        dialog.setDialogPane(dialogPane);
+        dialog.showAndWait();
 
         Room room = roomService.getRoomById(checkoutRoom.getId());
         showInfo(room);
